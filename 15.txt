@@ -1,0 +1,45 @@
+function howManyTimes(time1, time2) {
+    const getStrikes = (sec) => {
+        let days = Math.floor(sec / 86400);
+        let rem = sec % 86400;
+        
+        if (rem < 0) {
+            days--;
+            rem += 86400;
+        }
+        let strikes = days * 180;
+        
+        let hours = Math.floor(rem / 3600);
+        
+        for (let i = 0; i < hours; i++) {
+            let h = i % 12;
+            strikes += (h === 0 ? 12 : h) + 1;
+        }
+        
+        let remInHour = rem % 3600;
+        let h = hours % 12;
+     
+        if (remInHour > 0) {
+            strikes += Math.min(h === 0 ? 12 : h, remInHour);
+        }
+   
+        if (remInHour > 1800) {
+            strikes += 1;
+        }
+        
+        return strikes;
+    };
+
+    const parseTime = (str) => {
+        const [datePart, timePart] = str.split(' ');
+        const [y, m, d] = datePart.split('-').map(Number);
+        const [hh, mm, ss] = timePart.split(':').map(Number);
+        
+        return Math.floor(Date.UTC(y, m - 1, d) / 1000) + hh * 3600 + mm * 60 + ss;
+    };
+
+    const sec1 = parseTime(time1);
+    const sec2 = parseTime(time2);
+
+    return getStrikes(sec2) - getStrikes(sec1);
+}

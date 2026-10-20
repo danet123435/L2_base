@@ -1,0 +1,12 @@
+function expandedForm(num) {
+  const digits = String(num).split('');
+  const length = digits.length;
+  const parts = [];
+  for (let i = 0; i < length; i++) {
+    const digit = Number(digits[i]);
+    if (digit !== 0) {
+      parts.push(digit * Math.pow(10, length - 1 - i));
+    }
+  }
+  return parts.join(' + ');
+}
