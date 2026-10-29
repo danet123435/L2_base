@@ -1,1 +1,1 @@
-https://www.codewars.com/users/danet123435/completed_solutions
+https://www.codewars.com/users/2tvwet3jh/completed_solutions
