@@ -6,7 +6,7 @@ function hasTwoCubeSums(n) {
       const sum = a ** 3 + b ** 3;
       if (sum > n) break;
       if (sum === n) {
-        if (sums.has(sum)) return true; // Найдено второе представление
+        if (sums.has(sum)) return true; 
         sums.set(sum, [a, b]);
       }
     }
